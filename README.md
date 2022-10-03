@@ -1,0 +1,2 @@
+# MOH-Compliance-Analytic
+The primary purpose of this research project is focused on the design of a “ MOH-Compliance Analytic" whereby the system will be helping the Ministry of Health to make sure that all health institutions meets their requirements and give them a heads-up to carry on without a problem, and those that do not meet their requirements will find a way to get the help needed through this system so that the community can continue to benefit from it as long as it has access to quality medical care.  This p
