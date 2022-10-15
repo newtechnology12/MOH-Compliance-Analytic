@@ -1,0 +1,76 @@
+{% extends 'hospital/admin_base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<!--
+written By : sumit kumar
+facebook : fb.com/sumit.luv
+-->
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">THE LIST OF SELECTED BY HEALPHCARE ORGANIZATION</h6>
+    </div>
+    <table class="table table-bordered table-striped mb-0" id="dev-table">
+      <thead>
+        <tr>
+          <th>period </th>
+          <th> organizatonName</th>
+          <th>mobile </th>
+          <th>email </th>
+          <th>requirementselected</th>
+          <th> admitDate</th>
+        </tr>
+      </thead>
+      {% for a in appointments %}
+      <tr>
+        <td> {{a.period}}</td>
+        <td>{{a.organizatonName}}</td>
+        <td>{{a.mobile}}</td>
+        <td>{{a.email}}</td>
+        <td>{{a.admitDate}}</td>
+        
+      </tr>
+        {% for req in a.requirementselected.all%}
+        <td>{{req}}</td>
+     
+        {% endfor %}
+      {% endfor %}
+
+      <div class="jumbotron" style="margin-bottom:0px;">
+        <hr class="my-4">
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/admin-approve-appointment" role="button">Aproving AND Comment</a>
+         
+        </p>
+      </div>
+    </table>
+    </div>
+  </div>
+</div>
+<!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->
+
+{% endblock content %}

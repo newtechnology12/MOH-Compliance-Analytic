@@ -1,0 +1,105 @@
+{% extends 'hospital/admin_base.html' %}
+{% load static %}
+{% block content %}
+{%include 'hospital/admin_dashboard_cards.html'%}
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-primary col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">LIST HEALPHCARE APPROVED</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>org_Name </th>
+            <th>org_category</th>
+            <th>readerName</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for d in organization %}
+        <tr>
+          <td> {{d.organizationName}}</td>
+          <td>{{d.organizationcategory}}</td>
+          <td>{{d.readerName}}</td>
+          {%if d.status%}
+          <td> <span class="label label-primary">approved</span></td>
+        
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div class="panel panel-primary col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">LIST HEALPHCARE NOT APPROVED</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>org_Name </th>
+            <th>org_category</th>
+            <th>readerName</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for d in organizations %}
+        <tr>
+          <td> {{d.organizationName}}</td>
+          <td>{{d.organizationcategory}}</td>
+          <td>{{d.readerName}}</td>
+          {%if d.status%}
+          <td> <span class="label label-primary">APPROVED </span></td>
+          {% else %}
+          <td> <span class="label label-success">waiting list</span></td>
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div class="panel panel-primary col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">LIST OF SocialAffairs PHF_MOH</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          {% comment %} <tr> profile_pic </th> {% endcomment %}
+            <th>mobile </th>
+            <th>department</th>
+            <th>status</th>
+            
+
+          </tr>
+        </thead>
+        {% for d in  doctors %}
+        <tr>
+          {% comment %} <td> {{d.profile_pic}}</td> {% endcomment %}
+          <td>{{d.mobile}}</td>
+          <td>{{d.department}}</td>
+          {%if d.status%}
+          <td> <span class="label label-primary">Permanent</span></td>
+          {% else %}
+          <td> <span class="label label-success">On Hold</span></td>
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->
+
+{% endblock content %}

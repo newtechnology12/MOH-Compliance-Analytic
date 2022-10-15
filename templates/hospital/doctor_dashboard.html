@@ -1,0 +1,76 @@
+{% extends 'hospital/doctor_base.html' %}
+{% load static %}
+{% block content %}
+{%include 'hospital/doctor_dashboard_cards.html'%}
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    {% comment %} <div class="panel panel-primary" style="margin-left:15%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">EVALUATION CRITERIA FOR HEALPHCARE</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>period </th>
+            <th>organizatonName</th>
+            <th> mobile </th>
+            <th>requirementselected</th>
+            <th>admitDate</th>
+           
+          </tr>
+        </thead>
+        {% for a,p in appointments %}
+        <tr>
+          <td>{{a.period}}</td>
+          <td>{{a.organizatonName}}</td>
+          <td>{{a.mobile}}</td>
+          <td>{{a.requirementselected}}</td>
+          <td>{{a.admitDate}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div> {% endcomment %}
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-primary" style="margin-left:15%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">List of al healph care </h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th> organizationName</th>
+            <th>organizationcategory</th>
+            <th>location</th>
+            <th>readerName</th>
+            <th>email </th>
+            <th>Registed Date</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        {% for p in patients %}
+        <tr>
+          <td>{{p.organizationName}}</td>
+          <td>{{p.organizationcategory }}</td>
+          <td>{{p.location}}</td>
+          <td>{{p.readerName}}</td>
+          <td>{{p.email}}</td>
+          <td>{{p.startdate}}</td>
+          
+         
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+<!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->
+
+{% endblock content %}

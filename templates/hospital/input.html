@@ -1,0 +1,49 @@
+{% extends 'hospital/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+      .form-control{
+        width = 50;
+      }
+  
+      h6 {
+        text-align: center;
+      }
+  
+      .row {
+        margin: 100px;
+      }
+    </style>
+  </head>
+  <!--
+  written By : sumit kumar
+  facebook : fb.com/sumit.luv
+  -->
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Upload All Requirement in Imple way</h6>
+      </div>
+
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" class="btn btn-secondary btn-lg btn-block">
+        <button type="submit" class="btn btn-secondary btn-lg btn-block">Upload</button>
+      </form>
+    
+     
+  <!--
+  developed By : sumit kumar
+  facebook : fb.com/sumit.luv
+  youtube : youtube.com/lazycoders
+  -->
+  {% endblock content %}

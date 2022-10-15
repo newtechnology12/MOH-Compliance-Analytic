@@ -1,0 +1,837 @@
+{% extends 'hospital/homebase.html' %}
+{% load static %}
+<!--
+written By : sumit kumar
+facebook : fb.com/sumit.luv
+-->
+
+
+{% block content %}
+
+
+<head>
+
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      background-image: url('{% static "images/bg.jpg" %}');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .jumbotron h5,
+    h3 {
+      text-align: center;
+    }
+
+
+    .alert {
+      margin: 0px;
+    }
+
+
+
+    .glow {
+      font-size: 50px;
+      color: white;
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+      }
+
+      to {
+        text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+:root{
+    --green:#16a085;
+    --black:#444;
+    --light-color:#777;
+    --box-shadow:.5rem .5rem 0 rgba(22, 160, 133, .2);
+    --text-shadow:.4rem .4rem 0 rgba(0, 0, 0, .2);
+    --border:.2rem solid var(--green);
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-transform: capitalize;
+    transition: all .2s ease-out;
+    text-decoration: none;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+section{
+    padding:2rem 9%;
+}
+
+section:nth-child(even){
+    background: #f5f5f5;
+}
+
+.heading{
+    text-align: center;
+    padding-bottom: 2rem;
+    text-shadow: var(--text-shadow);
+    text-transform: uppercase;
+    color:var(--black);
+    font-size: 5rem;
+    letter-spacing: .4rem;
+}
+
+.heading span{
+    text-transform: uppercase;
+    color:var(--green);
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border:var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color:var(--green);
+    cursor: pointer;
+    font-size: 1.7rem;
+    background: #fff;
+}
+
+.btn span{
+    padding:.7rem 1rem;
+    border-radius: .5rem;
+    background: var(--green);
+    color:#fff;
+    margin-left: .5rem;
+}
+
+.btn:hover{
+    background: var(--green);
+    color:#fff;
+}
+
+.btn:hover span{
+    color: var(--green);
+    background:#fff;
+    margin-left: 1rem;
+}
+
+.header{
+    padding:2rem 9%;
+    position: fixed;
+    top:0; left: 0; right: 0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.header .logo{
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.header .logo i{
+    color: var(--green);
+}
+
+.header .navbar a{
+    font-size: 1.7rem;
+    color: var(--light-color);
+    margin-left: 2rem;
+}
+
+.header .navbar a:hover{
+    color: var(--green);
+}
+
+#menu-btn{
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    background: #eee;
+    color:var(--green);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.home{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top: 10rem;
+}
+
+.home .image{
+    flex:1 1 45rem;
+}
+
+.home .image img{
+    width: 100%;
+}
+
+.home .content{
+    flex:1 1 45rem;
+}
+
+.home .content h3{
+    font-size: 4.5rem;
+    color:var(--black);
+    line-height: 1.8;
+    text-shadow: var(--text-shadow);
+}
+
+.home .content p{
+    font-size: 1.7rem;
+    color:var(--light-color);
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+.icons-container{
+    display: grid;
+    gap:2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.icons-container .icons{
+    border:var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    text-align: center;
+    padding: 2.5rem;
+}
+
+.icons-container .icons i{
+    font-size: 4.5rem;
+    color:var(--green);
+    padding-bottom: .7rem;
+}
+
+.icons-container .icons h3{
+    font-size: 4.5rem;
+    color:var(--black);
+    padding: .5rem 0;
+    text-shadow: var(--text-shadow);
+}
+
+.icons-container .icons p{
+    font-size: 1.7rem;
+    color:var(--light-color);
+}
+
+.services .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap:2rem;
+}
+
+.services .box-container .box{
+    background:#fff;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border:var(--border);
+    padding: 2.5rem;
+}
+
+.services .box-container .box i{
+    color: var(--green);
+    font-size: 5rem;
+    padding-bottom: .5rem;
+}
+
+.services .box-container .box h3{
+    color: var(--black);
+    font-size: 2.5rem;
+    padding:1rem 0;
+}
+
+.services .box-container .box p{
+    color: var(--light-color);
+    font-size: 1.4rem;
+    line-height: 2;
+}
+
+.about .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:2rem;
+}
+
+.about .row .image{
+    flex:1 1 45rem;
+}
+
+.about .row .image img{
+    width: 100%;
+}
+
+.about .row .content{
+    flex:1 1 45rem;
+}
+
+.about .row .content h3{
+    color: var(--black);
+    text-shadow: var(--text-shadow);
+    font-size: 4rem;
+    line-height: 1.8;
+}
+
+.about .row .content p{
+    color: var(--light-color);
+    padding:1rem 0;
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+
+.doctors .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:2rem;
+}
+
+.doctors .box-container .box{
+    text-align: center;
+    background:#fff;
+    border-radius: .5rem;
+    border:var(--border);
+    box-shadow: var(--box-shadow);
+    padding:2rem;
+}
+
+.doctors .box-container .box img{
+    height: 20rem;
+    border:var(--border);
+    border-radius: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.doctors .box-container .box h3{
+    color:var(--black);
+    font-size: 2.5rem;
+}
+
+.doctors .box-container .box span{
+    color:var(--green);
+    font-size: 1.5rem;
+}
+
+.doctors .box-container .box .share{
+    padding-top: 2rem;
+}
+
+.doctors .box-container .box .share a{
+    height: 5rem;
+    width: 5rem;
+    line-height: 4.5rem;
+    font-size: 2rem;
+    color:var(--green);
+    border-radius: .5rem;
+    border:var(--border);
+    margin:.3rem;
+}
+
+.doctors .box-container .box .share a:hover{
+    background:var(--green);
+    color:#fff;
+    box-shadow: var(--box-shadow);
+}
+
+.book .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:2rem;
+}
+ 
+.book .row .image{
+    flex:1 1 45rem;
+}
+
+.book .row .image img{
+    width: 100%;
+}
+
+.book .row form{
+    flex:1 1 45rem;
+    background: #fff;
+    border:var(--border);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.book .row form h3{
+    color:var(--black);
+    padding-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.book .row form .box{
+    width: 100%;
+    margin:.7rem 0;
+    border-radius: .5rem;
+    border:var(--border);
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    padding: 1rem;
+}
+
+.book .row form .btn{
+    padding:1rem 4rem;
+}
+
+.review .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap:2rem;
+}
+
+.review .box-container .box{
+    border:var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    padding:2.5rem;
+    background: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.review .box-container .box img{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border:.5rem solid #fff;
+}
+
+.review .box-container .box h3{
+    color:#fff;
+    font-size: 2.2rem;
+    padding:.5rem 0;
+}
+
+.review .box-container .box .stars i{
+    color:#fff;
+    font-size: 1.5rem;
+}
+
+.review .box-container .box .text{
+    color:var(--light-color);
+    line-height: 1.8;
+    font-size: 1.6rem;
+    padding-top: 4rem;
+}
+
+.review .box-container .box::before{
+    content: '';
+    position: absolute;
+    top:-4rem; left: 50%;
+    transform:translateX(-50%);
+    background:var(--green);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 25rem;
+    width: 120%;
+    z-index: -1;
+}
+
+.blogs .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:2rem;
+}
+
+.blogs .box-container .box{
+    border:var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    padding: 2rem;
+}
+
+.blogs .box-container .box .image{
+    height: 20rem;
+    overflow:hidden;
+    border-radius: .5rem;
+}
+
+.blogs .box-container .box .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.blogs .box-container .box:hover .image img{
+    transform:scale(1.2);
+}
+
+.blogs .box-container .box .content{
+    padding-top: 1rem;
+}
+
+.blogs .box-container .box .content .icon{
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.blogs .box-container .box .content .icon a{
+    font-size: 1.4rem;
+    color: var(--light-color);
+}
+
+.blogs .box-container .box .content .icon a:hover{
+    color:var(--green);
+}
+
+.blogs .box-container .box .content .icon a i{
+    padding-right: .5rem;
+    color: var(--green);
+}
+
+.blogs .box-container .box .content h3{
+    color:var(--black);
+    font-size: 3rem;
+}
+
+.blogs .box-container .box .content p{
+    color:var(--light-color);
+    font-size: 1.5rem;
+    line-height: 1.8;
+    padding:1rem 0;
+}
+
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    gap:2rem;
+}
+
+.footer .box-container .box h3{
+    font-size: 2.5rem;
+    color:var(--black);
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.5rem;
+    color:var(--light-color);
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a i{
+    padding-right: .5rem;
+    color:var(--green);
+}
+
+.footer .box-container .box a:hover i{
+    padding-right:2rem;
+}
+
+.footer .credit{
+    padding: 1rem;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    color:var(--light-color);
+    border-top: .1rem solid rgba(0, 0, 0, .1);
+}
+
+.footer .credit span{
+    color:var(--green);
+}
+
+
+
+
+
+
+
+
+
+/* media queries  */
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+
+    .header{
+        padding: 2rem;
+    }
+
+    section{
+        padding:2rem;
+    }
+
+}
+
+@media (max-width:768px){
+
+    #menu-btn{
+        display: initial;
+    }
+
+    .header .navbar{
+        position: absolute;
+        top:115%; right: 2rem;
+        border-radius: .5rem;
+        box-shadow: var(--box-shadow);
+        width: 30rem;
+        border: var(--border);
+        background: #fff;
+        transform: scale(0);
+        opacity: 0;
+        transform-origin: top right;
+        transition: none;
+    }
+
+    .header .navbar.active{
+        transform: scale(1);
+        opacity: 1;
+        transition: .2s ease-out;
+    }
+
+    .header .navbar a{
+        font-size: 2rem;
+        display: block;
+        margin:2.5rem;
+    }
+
+}
+
+@media (max-width:450px){
+
+    html{
+        font-size: 50%;
+    }
+
+}
+  </style>
+</head>
+<br>
+<br>
+
+<div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
+  <br>
+  <h5 class="display-3 glow">You’ll Love the Way We Care for You</h5>
+  <br><br><br><br><br>
+  <p>
+  <h3>Emergency`ELIGIBILITY CRITERIA ?</h3>
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/patientclick" role="button">Take EVALUATION CRITERIA </a>
+  </p>
+  <br><br>
+</div>
+
+<br><br><br><br>
+{% include "hospital/admin_doctor_patient_card.html" %}
+
+<section class="home" id="home">
+
+  <div class="image">
+      <img src="{% static 'images/home-img.svg' %}" alt="">
+  </div>
+
+  <div class="content">
+      <h3>stay safe, stay healthy</h3>
+      <p>We can protect our loved ones by sharing them this good news. The more people will use StaySafe the more we can protect each othe</p>
+      <a href="#" class="btn"> contact us <span class="fas fa-chevron-right"></span> </a>
+  </div>
+
+</section>
+
+<section class="services" id="services">
+
+  <h1 class="heading"> our <span>services</span> </h1>
+
+  <div class="box-container">
+
+      <div class="box">
+          <i class="fas fa-notes-medical"></i>
+          <h3>ELIGIBILITY CRITERIA</h3>
+          <p>• Have the authorization to practice the services of a general or specialized clinic issued by the MINISANTE?..</p>
+          <p>• See if the clinic has an HIV/ARR, VCT/PMTCT service</p>
+        
+          <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+      </div>
+
+      <div class="box">
+          <i class="fas fa-ambulance"></i>
+          <h3>24/7 ambulance Faciletates</h3>
+          <p>Medical Air Service at Kigali International Airport in Kigali is your reliable partner for any medical repatriation....</p>
+          <a href="https://www.medical-air-service.com/airports/rwanda_rw/kigali/kigali-international-airport_20018.html" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+      </div>
+
+      <div class="box">
+          <i class="fas fa-user-md"></i>
+          <h3>Faciletate with an expert doctors</h3>
+          <p>Dr. Florence Sibomana
+              MD, Senior Program Officer on NCDs at PATH -Rwanda &Youth Leader for Nutrition-SUN CSN
+              Kigali, Kigali City, Rwanda
+              329 connections.</p>
+          <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+      </div>
+
+      <div class="box">
+          <i class="fas fa-pills"></i>
+          <h3>medicines Faciletate</h3>
+          <p>Clinical trials and studies generate vast amounts of high-quality data, yet it is rarely returned to the people taking part in the trial.</p>
+          <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+      </div>
+
+  </div>
+
+</section>
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+  <h1 class="heading"> <span>about</span> us </h1>
+
+  <div class="row">
+
+      <div class="image">
+          <img src="{% static 'images/about-img.svg' %}" alt="">
+      </div>
+
+      <div class="content">
+          <h3>we take care of your healthy life</h3>
+          <p>Most of us are not on the overtaxed frontlines of the healthcare battle, but all of us can be first responders to the need for emotional support. Almost everyone needs connection to others and the opportunity to give and get support right now.</p>
+          <p>So, how can you shore up your mental health and deepen your own emotional reservoir? The author offers four suggestions: 1) Start with self-care.</p>
+          <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+      </div>
+
+  </div>
+
+</section>
+{% comment %} #register section of segestion {% endcomment %}
+
+<section class="book" id="book">
+
+  <h1 class="heading"> <span>Register</span> now </h1>    
+
+  <div class="row">
+
+      <div class="image">
+          <img src="{% static 'images/book-img.svg' %}" alt="">
+      </div>
+
+      <form action="">
+          <h3>Any suggestion Please Register Here</h3>
+          <input type="text" placeholder="Enter your UserName" class="box">
+          <input type="email" placeholder="or User Your Email" class="box">
+              <label for="comment">Your Suggestion:</label>
+              <textarea class="box" rows="5" id="comment"></textarea>
+          <input type="submit" value="Register" class="btn">
+          
+          <hr>
+
+          
+          </ul>
+      </form>
+
+  </div>
+
+</section>
+
+<section class="blogs" id="blogs">
+
+  <h1 class="heading"> our <span>blogs</span> </h1>
+
+  <div class="box-container">
+
+      <div class="box">
+          <div class="image">
+              <img src="{% static 'images/blog-1.jpg' %}" alt="">
+          </div>
+          <div class="content">
+              <div class="icon">
+                  <a href="#"> <i class="fas fa-calendar"></i> 1st may, 2022 </a>
+                  <a href="#"> <i class="fas fa-user"></i> by MOH </a>
+              </div>
+              <h3>Wellness Marketing Guide</h3>
+              <p> How to Reach & Nurture Your Wellness Consumer</p>
+              <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+          </div>
+      </div>
+
+      <div class="box">
+          <div class="image">
+              <img src="{% static 'images/blog-2.jpg' %}" alt="">
+          </div>
+          <div class="content">
+              <div class="icon">
+                  <a href="#"> <i class="fas fa-calendar"></i> 1st may, 2022 </a>
+                  <a href="#"> <i class="fas fa-user"></i> by MOH </a>
+              </div>
+              <h3>Content Marketing for Doctors</h3>
+              <p>How to Create Content They Want & Need. </p>
+              <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+          </div>
+      </div>
+
+      <div class="box">
+          <div class="image">
+              <img src="{% static 'images/blog-3.jpg' %}" alt="">
+          </div>
+          <div class="content">
+              <div class="icon">
+                  <a href="#"> <i class="fas fa-calendar"></i> 1st may, 2022 </a>
+                  <a href="#"> <i class="fas fa-user"></i> by MOH </a>
+              </div>
+              <h3>Women’s Health Marketing</h3>
+              <p>How to Reach Women Healthcare Consumerst. .</p>
+              <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+          </div>
+      </div>
+
+  </div>
+
+</section>
+
+<!-- blogs section ends -->
+
+<br><br><br>
+<!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->
+
+{% endblock content %}
